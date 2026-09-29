@@ -1,5 +1,6 @@
 import random
 def  set_range():
+    '''this sets the min and max from user input'''
     global min, max
     min = input("Min: ")
     max = input("Max: ")
@@ -16,14 +17,15 @@ set_range()
 target = random.randint(min,max)
 Comp_count = []
 Player_count = []
-comp_guess = 50
 comp_max = max
 comp_min = min
+comp_guess = (comp_max + comp_min) // 2
 Comp_range = []
 another_round = True
 
 
 def comp_play():
+    '''This function finds the number directly in half of an updated min and max'''
     global comp_guess, comp_max, comp_min, comp_replay
     if target < comp_guess:
         Comp_count.append(comp_guess)
@@ -37,11 +39,12 @@ def comp_play():
         comp_replay = True
     else:
         Comp_count.append(comp_guess)
-        print("The computer guessed correctly")
+        print("Computer Search done")
         comp_replay = False
         return
 
 def player():
+    '''This function tells the user lower or higher and handles weather player guessed the target'''
     global player_guess
     player_guess = input("Enter Guess: ")
     while player_guess.isnumeric == False:
@@ -64,6 +67,7 @@ def player():
 comp_replay = False
 player_replay = False
 def print_results():
+    '''Prints the results'''
     if len(Player_count) < len(Comp_count):
         winner = "Player"
     if len(Player_count) > len(Comp_count):
