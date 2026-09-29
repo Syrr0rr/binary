@@ -1,19 +1,18 @@
 import random
-min = input("what is the min")
-max = input("What is the max")
-
-def set_range():
-    min = input("what is the min")
-    max = input("What is the max")
-    while min.isdigit() == False:
-        min = input("what is the min")
-    while max.isdigit() == False:
-        max = input("what is the min")
+def  set_range():
+    global min, max
+    min = input("Min: ")
+    max = input("Max: ")
+    while min.isdigit == False:
+        min = input("Min: ")
+    while max.isdigit == False:
+        max = input("Max: ")
     min = int(min)
     max = int(max)
-
+    while min > max:
+        print("Error Min > Max")
+        max = input("Max: ")
 set_range()
-
 target = random.randint(min,max)
 Comp_count = []
 Player_count = []
@@ -22,6 +21,7 @@ comp_max = max
 comp_min = min
 Comp_range = []
 another_round = True
+
 
 def comp_play():
     global comp_guess, comp_max, comp_min, comp_replay
@@ -104,4 +104,3 @@ while True:
     player_guess = None
     comp_guess = 50
     set_range()
-    
