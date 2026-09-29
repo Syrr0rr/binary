@@ -77,20 +77,25 @@ def print_results():
     print(f"""
 =========FINAL RESULTS=========
 
-
 Player Guesses:
 {Player_count}
 Player Guess Count:{len(Player_count)}
-
 
 Computer Guesses:
 {Comp_count}
 Player Guess Count:{len(Comp_count)}
 
-
 Winner: {winner}
 """)
-   
+def reset():
+    global comp_min,comp_max,Player_count, Comp_count, player_guess, comp_guess
+    comp_min = min
+    comp_max = max
+    Player_count = []
+    Comp_count = []
+    player_guess = None
+    comp_guess = (comp_max + comp_min) // 2
+
 while True:
     target = random.randint(min,max)
     player()
@@ -103,8 +108,5 @@ while True:
     player_input = input("Another round?(y for yes, other for no): ").strip().lower()
     if player_input != "y":
         break
-    Player_count = []
-    Comp_count = []
-    player_guess = None
-    comp_guess = 50
+    reset()
     set_range()
